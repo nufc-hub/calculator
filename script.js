@@ -16,26 +16,36 @@ function divide(array) {
 
 let firstNum = 3;
 let secondNum = 7;
-let operator = '+';
+let operator = "+";
 
 function operate() {
     switch(operator) {
-        case '+':
+        case "+":
             return add(firstNum, secondNum);
             break;
-        case '-':
+        case "-":
             return subtract(firstNum, secondNum);
             break;
-        case '*':
+        case "*":
             return multiply(firstNum, secondNum);
             break;
-        case '/':
+        case "/":
             return divide(firstNum, secondNum);
             break;
         default:
-            return 'E';
+            return "E";
             break;
     }
 }
 
-console.log(operate());
+const display = document.querySelector('.display');
+
+const numberButtons = document.querySelectorAll('.number-btn');
+
+const numberBtn = document.getElementById('one');
+
+numberButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        display.textContent += button.textContent;
+    });
+});
