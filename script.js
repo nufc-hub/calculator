@@ -1,3 +1,15 @@
+const display = document.querySelector('.display');
+
+const numberButtons = document.querySelectorAll('.number-btn');
+
+const operatorButtons = document.querySelectorAll('.operator');
+
+const operateButton = document.querySelector('.operate');
+
+let firstNum = 0;
+let secondNum = 0;
+let operator = "";
+
 function add(a, b) {
     return a + b;
 }
@@ -10,13 +22,9 @@ function multiply(a, b) {
     return a * b;
 }
 
-function divide(array) {
+function divide(a, b) {
     return a / b;
 }
-
-let firstNum = 3;
-let secondNum = 7;
-let operator = "+";
 
 function operate() {
     switch(operator) {
@@ -38,14 +46,27 @@ function operate() {
     }
 }
 
-const display = document.querySelector('.display');
-
-const numberButtons = document.querySelectorAll('.number-btn');
-
-const numberBtn = document.getElementById('one');
-
 numberButtons.forEach(function(button) {
     button.addEventListener('click', function() {
         display.textContent += button.textContent;
+        if (operator === '') {
+            firstNum += button.textContent;
+        } else {
+            secondNum += button.textContent;
+        }
+        console.log(firstNum);
+        console.log(secondNum);
     });
+});
+
+operatorButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        display.textContent += button.textContent;
+        operator += button.textContent;
+        console.log(operator);
+    });
+});
+
+operateButton.addEventListener('click', function() {
+    operate(); // unfinished - result should go to the firstNum variable and be appended to the display
 });
