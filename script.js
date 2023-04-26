@@ -61,8 +61,18 @@ numberButtons.forEach(function(button) {
 
 operatorButtons.forEach(function(button) {
     button.addEventListener('click', function() {
-        display.textContent += button.textContent;
-        operator += button.textContent;
+
+        if (firstNum !== 0 && operator !== '' && secondNum !== 0) {
+            const result = operate();
+            firstNum = result;
+            display.textContent = firstNum;
+            secondNum = 0;
+            operator = button.textContent;
+        } else {
+            display.textContent += button.textContent;
+            operator = button.textContent;
+        }
+
         console.log(operator);
     });
 });
@@ -70,6 +80,7 @@ operatorButtons.forEach(function(button) {
 operateButton.addEventListener('click', function() {
     const result = operate();
     firstNum = result;
+    display.textContent = result;
     secondNum = 0;
     operator = '';
     console.log(result)
