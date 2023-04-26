@@ -50,9 +50,9 @@ numberButtons.forEach(function(button) {
     button.addEventListener('click', function() {
         display.textContent += button.textContent;
         if (operator === '') {
-            firstNum += button.textContent;
+            firstNum = Number(firstNum += button.textContent);
         } else {
-            secondNum += button.textContent;
+            secondNum = Number(secondNum += button.textContent);
         }
         console.log(firstNum);
         console.log(secondNum);
@@ -68,5 +68,9 @@ operatorButtons.forEach(function(button) {
 });
 
 operateButton.addEventListener('click', function() {
-    operate(); // unfinished - result should go to the firstNum variable and be appended to the display
+    const result = operate();
+    firstNum = result;
+    secondNum = 0;
+    operator = '';
+    console.log(result)
 });
