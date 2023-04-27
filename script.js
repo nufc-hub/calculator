@@ -1,4 +1,6 @@
-const display = document.querySelector('.display');
+const displayUpper = document.querySelector('.calculation')
+
+const displayMain = document.querySelector('.current-value');
 
 const numberButtons = document.querySelectorAll('.number-btn');
 
@@ -48,7 +50,7 @@ function operate() {
 
 numberButtons.forEach(function(button) {
     button.addEventListener('click', function() {
-        display.textContent += button.textContent;
+        displayMain.textContent += button.textContent;
         if (operator === '') {
             firstNum = Number(firstNum += button.textContent);
         } else {
@@ -65,11 +67,11 @@ operatorButtons.forEach(function(button) {
         if (firstNum !== 0 && operator !== '' && secondNum !== 0) {
             const result = operate();
             firstNum = result;
-            display.textContent = firstNum;
+            displayMain.textContent = firstNum;
             secondNum = 0;
             operator = button.textContent;
         } else {
-            display.textContent += button.textContent;
+            displayMain.textContent += button.textContent;
             operator = button.textContent;
         }
 
@@ -80,7 +82,7 @@ operatorButtons.forEach(function(button) {
 operateButton.addEventListener('click', function() {
     const result = operate();
     firstNum = result;
-    display.textContent = result;
+    displayMain.textContent = result;
     secondNum = 0;
     operator = '';
     console.log(result)
