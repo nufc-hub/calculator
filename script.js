@@ -103,5 +103,9 @@ function clear() {
         firstNum = 0;
         secondNum = 0;
         operator = '';
+        displayMain.textContent = '';
+        displayMinor.textContent = ''
     });
 }
+
+clear();
