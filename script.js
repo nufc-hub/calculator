@@ -1,6 +1,6 @@
-const displayMinor = document.querySelector('.calculation');
+const displayMinor = document.querySelector('.display-minor');
 
-const displayMain = document.querySelector('.current-value');
+const displayMain = document.querySelector('.display-main');
 
 const numberButtons = document.querySelectorAll('.number-btn');
 
@@ -8,9 +8,11 @@ const operatorButtons = document.querySelectorAll('.operator');
 
 const operateButton = document.querySelector('.operate');
 
+const clearBtn = document.querySelector('.clear');
+
 let firstNum = 0;
 let secondNum = 0;
-let operator = "";
+let operator = '';
 
 function add(a, b) {
     return a + b;
@@ -95,3 +97,11 @@ operateButton.addEventListener('click', function() { // this gives functionality
     operator = '';
     console.log(firstNum);
 });
+
+function clear() {
+    clearBtn.addEventListener('click', function () {
+        firstNum = 0;
+        secondNum = 0;
+        operator = '';
+    });
+}
