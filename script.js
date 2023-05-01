@@ -53,13 +53,11 @@ function operate() {
 numberButtons.forEach(function(button) {
     button.addEventListener('click', function() {
         displayMain.textContent += button.textContent;
-        if (firstNum !== 0 && operator !== '' && secondNum === 0) {
-            displayMain.textContent = button.textContent
-        } // this replaces the result in the main display with the next digit(s) to be calculated 
         if (operator === '') {
             firstNum = Number(firstNum += button.textContent);
         } else {
             secondNum = Number(secondNum += button.textContent);
+            displayMain.textContent = secondNum;// this replaces the result in the main display with the next digit(s) to be calculated
         }
         console.log(firstNum);
         console.log(secondNum);
@@ -68,7 +66,8 @@ numberButtons.forEach(function(button) {
 
 operatorButtons.forEach(function(button) {
     button.addEventListener('click', function() {
-         if (firstNum !== 0 && operator !== '' && secondNum !== 0) {
+        //if (firstNum !== 0 && operator === '/' && secondNum === 0) for / by 0 message
+        if (operator !== '') {
             const result = operate();
             const roundedResult = result.toFixed(5); //rounds result to within 5 decimal places
             const resultToNumber = Number(roundedResult);// changes roundedResult from string to number
