@@ -50,9 +50,8 @@ function operate() {
     }
 }
 
-numberButtons.forEach(function(button) {
-    button.addEventListener('click', function() {
-        displayMain.textContent += button.textContent;
+function handleNumberButtonClick(button) {
+    displayMain.textContent += button.textContent;
         if (operator === '') {
             firstNum = Number(firstNum += button.textContent);
         } else {
@@ -61,32 +60,28 @@ numberButtons.forEach(function(button) {
         }
         console.log(firstNum);
         console.log(secondNum);
-    });
-});
+}
 
-operatorButtons.forEach(function(button) {
-    button.addEventListener('click', function() {
-        //if (firstNum !== 0 && operator === '/' && secondNum === 0) for / by 0 message
-        if (operator !== '') {
-            const result = operate();
-            const roundedResult = result.toFixed(5); //rounds result to within 5 decimal places
-            const resultToNumber = Number(roundedResult);// changes roundedResult from string to number
-            firstNum = resultToNumber;
-            displayMain.textContent = firstNum; //this adds the result of the most recent calculation to the main display
-            displayMinor.textContent += secondNum; //this adds the secondNum variable to the minor display
-            secondNum = 0; //this then sets the secondNum variable back to 0 to clear it for the next calculation
-            operator = button.textContent;
-            displayMinor.textContent += operator; //this adds the clicked operator value to the minor display
-        } else {
-            operator = button.textContent;
-            displayMinor.textContent += firstNum; //this and...
-            displayMinor.textContent += operator; //this moves the first number and first operator in the calculation to the minor display as well ass all following numbers and operators, when true
-        }            
-        console.log(operator);
-    });
-});
+function handleOperatorButtonClick(button) {
+    if (operator !== '') {
+        const result = operate();
+        const roundedResult = result.toFixed(5); //rounds result to within 5 decimal places
+        const resultToNumber = Number(roundedResult);// changes roundedResult from string to number
+        firstNum = resultToNumber;
+        displayMain.textContent = firstNum; //this adds the result of the most recent calculation to the main display
+        displayMinor.textContent += secondNum; //this adds the secondNum variable to the minor display
+        secondNum = 0; //this then sets the secondNum variable back to 0 to clear it for the next calculation
+        operator = button.textContent;
+        displayMinor.textContent += operator; //this adds the clicked operator value to the minor display
+    } else {
+        operator = button.textContent;
+        displayMinor.textContent += firstNum; //this and...
+        displayMinor.textContent += operator; //this moves the first number and first operator in the calculation to the minor display as well ass all following numbers and operators, when true
+    }            
+    console.log(operator);
+}
 
-operateButton.addEventListener('click', function() { // this gives functionality to the '=' button
+function handleOperateButtonClick() {
     const result = operate();
     const roundedResult = result.toFixed(5); // rounds result to within 5 decimal places
     const resultToNumber = Number(roundedResult); // changes roundedResult from string to number
@@ -95,16 +90,33 @@ operateButton.addEventListener('click', function() { // this gives functionality
     secondNum = 0;
     operator = '';
     console.log(firstNum);
-});
-
-function clear() {
-    clearBtn.addEventListener('click', function () {
-        firstNum = 0;
-        secondNum = 0;
-        operator = '';
-        displayMain.textContent = '';
-        displayMinor.textContent = ''
-    });
 }
 
-clear();
+function handleClearButtonClick() {
+    firstNum = 0;
+    secondNum = 0;
+    operator = '';
+    displayMain.textContent = '';
+    displayMinor.textContent = ''
+}
+
+numberButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        handleNumberButtonClick(button);
+    });
+});
+
+operatorButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        handleOperatorButtonClick(button);
+    });
+});
+
+operateButton.addEventListener('click', function() { // this gives functionality to the '=' button
+    handleOperateButtonClick();
+});
+
+clearBtn.addEventListener('click', function () {
+    handleClearButtonClick();
+});
+
