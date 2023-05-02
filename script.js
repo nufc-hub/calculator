@@ -63,7 +63,10 @@ function handleNumberButtonClick(button) {
 }
 
 function handleOperatorButtonClick(button) {
-    if(operator !== '') {
+    if (operator === '/' && secondNum === 0) {
+        displayMain.textContent = 'LOL'
+        operator = button.textContent;
+    } else if (operator !== '') {
         const result = operate();
         const roundedResult = result.toFixed(5); // Rounds result to within 5 decimal places.
         const resultToNumber = Number(roundedResult);// Changes roundedResult from string to number.
@@ -83,14 +86,18 @@ function handleOperatorButtonClick(button) {
 }
 
 function handleOperateButtonClick() {
-    const result = operate();
-    const roundedResult = result.toFixed(5); // Rounds result to within 5 decimal places.
-    const resultToNumber = Number(roundedResult); // Changes roundedResult from string to number.
-    firstNum = resultToNumber;
-    displayMain.textContent = firstNum;
-    secondNum = '';
-    operator = '';
-    console.log(firstNum);
+    if (operator === '/' && secondNum === 0) {
+        displayMain.textContent = 'LOL'
+    } else {
+        const result = operate();
+        const roundedResult = result.toFixed(5); // Rounds result to within 5 decimal places.
+        const resultToNumber = Number(roundedResult); // Changes roundedResult from string to number.
+        firstNum = resultToNumber;
+        displayMain.textContent = firstNum;
+        secondNum = '';
+        operator = '';
+        console.log(firstNum);
+    }
 }
 
 function handleClearButtonClick() {
