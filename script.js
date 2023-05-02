@@ -10,8 +10,8 @@ const operateButton = document.querySelector('.operate');
 
 const clearBtn = document.querySelector('.clear');
 
-let firstNum = 0;
-let secondNum = 0;
+let firstNum = '';
+let secondNum = '';
 let operator = '';
 
 function add(a, b) {
@@ -27,11 +27,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    if (b == 0) {
-        displayMain.textContent = 'LOL'
-    } else {
-        return a / b;
-    }
+    return a / b;
 }
 
 function operate() {
@@ -74,7 +70,7 @@ function handleOperatorButtonClick(button) {
         firstNum = resultToNumber;
         displayMain.textContent = firstNum; // Adds the result of the most recent calculation to the main display.
         displayMinor.textContent += secondNum; // Adds the secondNum variable to the minor display.
-        secondNum = 0; // This then sets the secondNum variable back to 0 to clear it for the next calculation.
+        secondNum = ''; // This then sets the secondNum variable back to 0 to clear it for the next calculation.
         operator = button.textContent;
         displayMinor.textContent += operator; // Adds the clicked operator value to the minor display.
     } else {
@@ -92,14 +88,14 @@ function handleOperateButtonClick() {
     const resultToNumber = Number(roundedResult); // Changes roundedResult from string to number.
     firstNum = resultToNumber;
     displayMain.textContent = firstNum;
-    secondNum = 0;
+    secondNum = '';
     operator = '';
     console.log(firstNum);
 }
 
 function handleClearButtonClick() {
-    firstNum = 0;
-    secondNum = 0;
+    firstNum = '';
+    secondNum = '';
     operator = '';
     displayMain.textContent = '';
     displayMinor.textContent = '';
