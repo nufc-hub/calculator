@@ -10,6 +10,8 @@ const operateButton = document.querySelector('.operate');
 
 const clearBtn = document.querySelector('.clear');
 
+const backspaceBtn = document.querySelector('.backspace')
+
 let firstNum = '';
 let secondNum = '';
 let operator = '';
@@ -94,6 +96,7 @@ function handleOperateButtonClick() {
         const resultToNumber = Number(roundedResult); // Changes roundedResult from string to number.
         firstNum = resultToNumber;
         displayMain.textContent = firstNum;
+        displayMinor.textContent += secondNum;
         secondNum = '';
         operator = '';
         console.log(firstNum);
@@ -106,6 +109,20 @@ function handleClearButtonClick() {
     operator = '';
     displayMain.textContent = '';
     displayMinor.textContent = '';
+}
+
+function handleBackspaceButtonClick() {
+    if (operator === '' && secondNum === '') {
+        displayMain.textContent = displayMain.textContent.slice(0, -1);
+        firstNum = parseInt(firstNum.toString().slice(0, -1), 10);
+        displayMain.textContent = firstNum;
+    } else if (operator !== '' && secondNum === '') {
+        displayMain.textContent = ''
+    } else {
+        displayMain.textContent = displayMain.textContent.slice(0, -1);
+        secondNum = parseInt(secondNum.toString().slice(0, -1), 10);
+        displayMain.textContent = secondNum;
+    }
 }
 
 numberButtons.forEach(function(button) { // Gives functionality to the 'number' buttons.
@@ -124,7 +141,10 @@ operateButton.addEventListener('click', function() { // Gives functionality to t
     handleOperateButtonClick();
 });
 
-clearBtn.addEventListener('click', function () { // Gives functionality to the 'clear' button.
+clearBtn.addEventListener('click', function() { // Gives functionality to the 'clear' button.
     handleClearButtonClick();
 });
 
+backspaceBtn.addEventListener('click', function() { // Gives functionality to the 'backspace' button.
+    handleBackspaceButtonClick()
+});
