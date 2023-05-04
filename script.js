@@ -68,6 +68,8 @@ function handleOperatorButtonClick(button) {
     if (operator === '/' && secondNum === 0) {
         displayMain.textContent = 'LOL'
         operator = button.textContent;
+    } else if (firstNum === '' && operator === '' && secondNum === '') {
+        displayMain.textContent = '';
     } else if (operator !== '') {
         const result = operate();
         const roundedResult = result.toFixed(5); // Rounds result to within 5 decimal places.
@@ -83,7 +85,7 @@ function handleOperatorButtonClick(button) {
         displayMinor.textContent += firstNum; // This and...
         displayMinor.textContent += operator; /* this moves the first number and first operator in the calculation
                                             to the minor display as well ass all following numbers and operators, when true. */
-    }            
+    }
     console.log(operator);
 }
 
@@ -96,7 +98,7 @@ function handleOperateButtonClick() {
         const resultToNumber = Number(roundedResult); // Changes roundedResult from string to number.
         firstNum = resultToNumber;
         displayMain.textContent = firstNum;
-        displayMinor.textContent += secondNum;
+        displayMinor.textContent = '';
         secondNum = '';
         operator = '';
         console.log(firstNum);
@@ -112,17 +114,22 @@ function handleClearButtonClick() {
 }
 
 function handleBackspaceButtonClick() {
-    if (operator === '' && secondNum === '') {
+
+    if (firstNum !== '' && operator !== '' && secondNum === '') {
+        displayMain.textContent = '';
+    } else if (firstNum !== '' && operator === '' && secondNum === '' ) {
+        displayMain.textContent = displayMain.textContent.slice(0, -1);
+        firstNum = parseInt(firstNum.toString().slice(0, -1), 10);
+    } else if (operator === '' && secondNum === '') {
         displayMain.textContent = displayMain.textContent.slice(0, -1);
         firstNum = parseInt(firstNum.toString().slice(0, -1), 10);
         displayMain.textContent = firstNum;
-    } else if (operator !== '' && secondNum === '') {
-        displayMain.textContent = ''
     } else {
         displayMain.textContent = displayMain.textContent.slice(0, -1);
         secondNum = parseInt(secondNum.toString().slice(0, -1), 10);
         displayMain.textContent = secondNum;
     }
+
 }
 
 numberButtons.forEach(function(button) { // Gives functionality to the 'number' buttons.
