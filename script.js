@@ -70,6 +70,10 @@ function handleOperatorButtonClick(button) {
         operator = button.textContent;
     } else if (firstNum === '' && operator === '' && secondNum === '') {
         displayMain.textContent = '';
+    } else if (firstNum !== '' && operator !== '' && secondNum === '') {
+        operator = button.textContent;
+        modifyDisplayMinor = displayMinor.textContent.slice(0, -1);
+        displayMinor.textContent = modifyDisplayMinor += operator;
     } else if (operator !== '') {
         const result = operate();
         const roundedResult = result.toFixed(5); // Rounds result to within 5 decimal places.
