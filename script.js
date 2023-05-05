@@ -71,10 +71,12 @@ function handleOperatorButtonClick(button) {
     } else if (firstNum === '' && operator === '' && secondNum === '') {
         displayMain.textContent = '';
     } else if (firstNum !== '' && operator !== '' && secondNum === '') {
+        firstNum = Number(firstNum);
         operator = button.textContent;
         modifyDisplayMinor = displayMinor.textContent.slice(0, -1);
         displayMinor.textContent = modifyDisplayMinor += operator;
     } else if (operator !== '') {
+        secondNum = Number(secondNum);
         const result = operate();
         const roundedResult = result.toFixed(5); // Rounds result to within 5 decimal places.
         const resultToNumber = Number(roundedResult);// Changes roundedResult from string to number.
@@ -99,6 +101,8 @@ function handleOperateButtonClick() {
     } else if (secondNum === '') {
         return; // When '=' button is pressed but secondNum is empty, nothing happens.
     } else {
+        firstNum = Number(firstNum);
+        secondNum = Number(secondNum);
         const result = operate();
         const roundedResult = result.toFixed(5); // Rounds result to within 5 decimal places.
         const resultToNumber = Number(roundedResult); // Changes roundedResult from string to number.
@@ -125,14 +129,14 @@ function handleBackspaceButtonClick() {
         displayMain.textContent = '';
     } else if (firstNum !== '' && operator === '' && secondNum === '' ) {
         displayMain.textContent = displayMain.textContent.slice(0, -1);
-        firstNum = parseInt(firstNum.toString().slice(0, -1), 10);
+        firstNum = firstNum.toString().slice(0, -1);
     } else if (operator === '' && secondNum === '') {
         displayMain.textContent = displayMain.textContent.slice(0, -1);
-        firstNum = parseInt(firstNum.toString().slice(0, -1), 10);
+        firstNum = firstNum.toString().slice(0, -1);
         displayMain.textContent = firstNum;
     } else {
         displayMain.textContent = displayMain.textContent.slice(0, -1);
-        secondNum = parseInt(secondNum.toString().slice(0, -1), 10);
+        secondNum = secondNum.toString().slice(0, -1);
         displayMain.textContent = secondNum;
     }
 }
