@@ -96,6 +96,8 @@ function handleOperatorButtonClick(button) {
 function handleOperateButtonClick() {
     if (operator === '/' && secondNum === 0) {
         displayMain.textContent = 'LOL'
+    } else if (secondNum === '') {
+        return; // When '=' button is pressed but secondNum is empty, nothing happens.
     } else {
         const result = operate();
         const roundedResult = result.toFixed(5); // Rounds result to within 5 decimal places.
@@ -133,7 +135,6 @@ function handleBackspaceButtonClick() {
         secondNum = parseInt(secondNum.toString().slice(0, -1), 10);
         displayMain.textContent = secondNum;
     }
-
 }
 
 numberButtons.forEach(function(button) { // Gives functionality to the 'number' buttons.
