@@ -4,6 +4,8 @@ const displayMain = document.querySelector('.display-main');
 
 const numberButtons = document.querySelectorAll('.number-btn');
 
+const decimalButton = document.querySelector('.point');
+
 const operatorButtons = document.querySelectorAll('.operator');
 
 const operateButton = document.querySelector('.operate');
@@ -51,17 +53,21 @@ function operate() {
 function handleNumberButtonClick(button) {
     displayMain.textContent += button.textContent;
         if (operator === '') {
-            firstNum = Number(firstNum += button.textContent);
+            firstNum = firstNum += button.textContent;
             displayMain.textContent = firstNum;/* Replaces the 0 in the main display with the next clicked number, 
                                                 if 0 is clicked as the very first number at the start of a calculation 
                                                 or if 0 is clicked straight after clicking clear. */
         } else {
-            secondNum = Number(secondNum += button.textContent);
+            secondNum = secondNum += button.textContent;
             displayMain.textContent = secondNum;/* Replaces the result in the main display with the next digit(s) 
                                                 to be calculated. */
         }
         console.log(firstNum);
         console.log(secondNum);
+}
+
+function handleDecimalButtonClick() {
+    displayMain.textContent += decimalButton.textContent
 }
 
 function handleOperatorButtonClick(button) {
@@ -145,6 +151,10 @@ numberButtons.forEach(function(button) { // Gives functionality to the 'number' 
     button.addEventListener('click', function() {
         handleNumberButtonClick(button);
     });
+});
+
+decimalButton.addEventListener('click', function() {
+    handleDecimalButtonClick();
 });
 
 operatorButtons.forEach(function(button) { // Gives functionality to the 'operator' buttons.
