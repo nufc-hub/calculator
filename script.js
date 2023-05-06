@@ -87,6 +87,10 @@ window.onkeydown = function(e) {
             choice = document.querySelector('#backspace');
             choice.click();
             break;
+        case 'Escape':
+            choice = document.querySelector('#clear');
+            choice.click();
+            break;
     }
 };
 
