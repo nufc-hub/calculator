@@ -14,6 +14,83 @@ const clearBtn = document.querySelector('.clear');
 
 const backspaceBtn = document.querySelector('.backspace')
 
+window.onkeydown = function(e) {
+    let key = e.key;
+    let choice;
+    switch (key) {
+        case '0':
+            choice = document.querySelector('#zero');
+            choice.click();
+            break;
+        case '1':
+            choice = document.querySelector('#one');
+            choice.click();
+            break;
+        case '2':
+            choice = document.querySelector('#two');
+            choice.click();
+            break;
+        case '3':
+            choice = document.querySelector('#three');
+            choice.click();
+            break;
+        case '4':
+            choice = document.querySelector('#four');
+            choice.click();
+            break;
+        case '5':
+            choice = document.querySelector('#five');
+            choice.click();
+            break;
+        case '6':
+            choice = document.querySelector('#six');
+            choice.click();
+            break;
+        case '7':
+            choice = document.querySelector('#seven');
+            choice.click();
+            break;
+        case '8':
+            choice = document.querySelector('#eight');
+            choice.click();
+            break;
+        case '9':
+            choice = document.querySelector('#nine');
+            choice.click();
+            break;
+        case '.':
+            choice = document.querySelector('.point');
+            choice.click();
+            break;
+        case '+':
+            choice = document.querySelector('#add');
+            choice.click();
+            break;
+        case '-':
+            choice = document.querySelector('#subtract')
+            choice.click();
+            break;
+        case '*':
+            choice = document.querySelector('#multiply');
+            choice.click();
+            break;
+        case '/':
+            choice = document.querySelector('#divide');
+            choice.click();
+            break;
+        case 'Enter':
+        case '=':
+            choice = document.querySelector('#equals')
+            choice.click()
+            break;
+        case 'Backspace':
+            choice = document.querySelector('#backspace');
+            choice.click();
+            break;
+    }
+};
+
+
 let firstNum = '';
 let secondNum = '';
 let operator = '';
@@ -67,7 +144,25 @@ function handleNumberButtonClick(button) {
 }
 
 function handleDecimalButtonClick() {
-    displayMain.textContent += decimalButton.textContent
+    if (firstNum !== '' && operator !== '' && secondNum === '') {
+        displayMain.textContent = '0.'
+        secondNum = '0.'
+    } else if (firstNum === '' && operator === '' && secondNum === '' ) {
+        displayMain.textContent = '0.'
+        firstNum = '0.'
+    } else if (firstNum.includes('.') && secondNum === '') {
+        return;
+    } else if (firstNum !== '' && secondNum.includes('.')) {
+        return;
+    } else if (firstNum !== '' && operator !== '' && secondNum === '') {
+        displayMain.textContent = '.'
+    } else if (secondNum === '') {
+        firstNum += decimalButton.textContent;
+        displayMain.textContent += decimalButton.textContent;
+    } else {
+        secondNum += decimalButton.textContent;
+        displayMain.textContent += decimalButton.textContent;
+    }
 }
 
 function handleOperatorButtonClick(button) {
@@ -77,16 +172,16 @@ function handleOperatorButtonClick(button) {
     } else if (firstNum === '' && operator === '' && secondNum === '') {
         displayMain.textContent = '';
     } else if (firstNum !== '' && operator !== '' && secondNum === '') {
-        firstNum = Number(firstNum);
         operator = button.textContent;
         modifyDisplayMinor = displayMinor.textContent.slice(0, -1);
         displayMinor.textContent = modifyDisplayMinor += operator;
     } else if (operator !== '') {
-        secondNum = Number(secondNum);
+        firstNum = parseFloat(firstNum);
+        secondNum = parseFloat(secondNum);
         const result = operate();
         const roundedResult = result.toFixed(5); // Rounds result to within 5 decimal places.
-        const resultToNumber = Number(roundedResult);// Changes roundedResult from string to number.
-        firstNum = resultToNumber;
+        const resultToNumber = parseFloat(roundedResult);// Changes roundedResult from string to number.
+        firstNum = String(resultToNumber);
         displayMain.textContent = firstNum; // Adds the result of the most recent calculation to the main display.
         displayMinor.textContent += secondNum; // Adds the secondNum variable to the minor display.
         secondNum = ''; // This then sets the secondNum variable back to 0 to clear it for the next calculation.
@@ -107,12 +202,12 @@ function handleOperateButtonClick() {
     } else if (secondNum === '') {
         return; // When '=' button is pressed but secondNum is empty, nothing happens.
     } else {
-        firstNum = Number(firstNum);
-        secondNum = Number(secondNum);
+        firstNum = parseFloat(firstNum);
+        secondNum = parseFloat(secondNum);
         const result = operate();
         const roundedResult = result.toFixed(5); // Rounds result to within 5 decimal places.
-        const resultToNumber = Number(roundedResult); // Changes roundedResult from string to number.
-        firstNum = resultToNumber;
+        const resultToNumber = parseFloat(roundedResult); // Changes roundedResult from string to number.
+        firstNum = String(resultToNumber);
         displayMain.textContent = firstNum;
         displayMinor.textContent = '';
         secondNum = '';
