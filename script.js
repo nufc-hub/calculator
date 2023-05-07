@@ -1,4 +1,4 @@
-const displayMinor = document.querySelector('.display-minor');
+const subDisplay = document.querySelector('.sub-display');
 
 const displayMain = document.querySelector('.display-main');
 
@@ -206,8 +206,8 @@ function handleOperatorButtonClick(button) {
         displayMain.textContent = '';
     } else if (firstNum !== '' && operator !== '' && secondNum === '') {
         operator = button.textContent;
-        modifyDisplayMinor = displayMinor.textContent.slice(0, -1);
-        displayMinor.textContent = modifyDisplayMinor += operator;
+        modifySubDisplay = subDisplay.textContent.slice(0, -1);
+        subDisplay.textContent = modifySubDisplay += operator;
     } else if (operator !== '') {
         firstNum = parseFloat(firstNum);
         secondNum = parseFloat(secondNum);
@@ -216,15 +216,15 @@ function handleOperatorButtonClick(button) {
         const resultToNumber = parseFloat(roundedResult);// Changes roundedResult from string to number.
         firstNum = String(resultToNumber);
         displayMain.textContent = firstNum; // Adds the result of the most recent calculation to the main display.
-        displayMinor.textContent += secondNum; // Adds the secondNum variable to the minor display.
+        subDisplay.textContent += secondNum; // Adds the secondNum variable to the sub-display.
         secondNum = ''; // This then sets the secondNum variable back to 0 to clear it for the next calculation.
         operator = button.textContent;
-        displayMinor.textContent += operator; // Adds the clicked operator value to the minor display.
+        subDisplay.textContent += operator; // Adds the clicked operator value to the sub-display.
     } else {
         operator = button.textContent;
-        displayMinor.textContent += firstNum; // This and...
-        displayMinor.textContent += operator; /* this moves the first number and first operator in the calculation
-                                            to the minor display as well ass all following numbers and operators, when true. */
+        subDisplay.textContent += firstNum; // This and...
+        subDisplay.textContent += operator; /* this moves the first number and first operator in the calculation
+                                            to the sub-display as well ass all following numbers and operators, when true. */
     }
     console.log(operator);
 }
@@ -242,7 +242,7 @@ function handleOperateButtonClick() {
         const resultToNumber = parseFloat(roundedResult); // Changes roundedResult from string to number.
         firstNum = String(resultToNumber);
         displayMain.textContent = firstNum;
-        displayMinor.textContent = displayMinor.textContent + secondNum + '='; /* this adds the secondNum variable that has just been operated on to the subDisplay
+        subDisplay.textContent = subDisplay.textContent + secondNum + '='; /* this adds the secondNum variable that has just been operated on to the subDisplay
                                                                                 along with an '=' sign. This is so the user can continue to see the history of their
                                                                                 calculation. */ 
         secondNum = '';
@@ -256,7 +256,7 @@ function handleClearButtonClick() {
     secondNum = '';
     operator = '';
     displayMain.textContent = '';
-    displayMinor.textContent = '';
+    subDisplay.textContent = '';
 }
 
 function handleBackspaceButtonClick() {
