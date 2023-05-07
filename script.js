@@ -188,10 +188,13 @@ function handleDecimalButtonClick() {
 }
 
 function handlePlusMinusButtonClick() {
-    if (displayMain.textContent.includes('-')) {
-        displayMain.textContent.slice(0, 1);
+    if (firstNum.includes('-')) {
+        firstNum = firstNum.slice(1);
+        displayMain.textContent = firstNum;
     } else {
-        '-' + displayMain.textContent;
+        const minus = '-';
+        firstNum = minus + firstNum;
+        displayMain.textContent = firstNum
     }
 }
 
