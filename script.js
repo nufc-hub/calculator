@@ -6,6 +6,8 @@ const numberButtons = document.querySelectorAll('.number-btn');
 
 const decimalButton = document.querySelector('.point');
 
+const plusMinusButton = document.querySelector('.plus-minus')
+
 const operatorButtons = document.querySelectorAll('.operator');
 
 const operateButton = document.querySelector('.operate');
@@ -132,19 +134,35 @@ function operate() {
 }
 
 function handleNumberButtonClick(button) {
+    const displayMainLength = 15
+    const maxDecimalLength = 10
+
+    if (displayMain.textContent.length === 15){
+        return;
+    }
+    
+    if (displayMain.textContent.includes('.')) {
+        const decimalPosition = displayMain.textContent.indexOf('.');
+        const maxLength = displayMainLength - decimalPosition + maxDecimalLength;
+            if (displayMain.textContent.length === maxLength) {
+                return;
+            }
+    } 
+    
     displayMain.textContent += button.textContent;
-        if (operator === '') {
-            firstNum = firstNum += button.textContent;
-            displayMain.textContent = firstNum;/* Replaces the 0 in the main display with the next clicked number, 
-                                                if 0 is clicked as the very first number at the start of a calculation 
-                                                or if 0 is clicked straight after clicking clear. */
-        } else {
-            secondNum = secondNum += button.textContent;
-            displayMain.textContent = secondNum;/* Replaces the result in the main display with the next digit(s) 
-                                                to be calculated. */
-        }
-        console.log(firstNum);
-        console.log(secondNum);
+    
+    if (operator === '') {
+        firstNum = firstNum += button.textContent;
+        displayMain.textContent = firstNum;/* Replaces the 0 in the main display with the next clicked number, 
+                                            if 0 is clicked as the very first number at the start of a calculation 
+                                            or if 0 is clicked straight after clicking clear. */
+    } else {
+        secondNum = secondNum += button.textContent;
+        displayMain.textContent = secondNum;/* Replaces the result in the main display with the next digit(s) 
+                                            to be calculated. */
+    }
+    console.log(firstNum);
+    console.log(secondNum);
 }
 
 function handleDecimalButtonClick() {
@@ -169,8 +187,16 @@ function handleDecimalButtonClick() {
     }
 }
 
+function handlePlusMinusButtonClick() {
+    if (displayMain.textContent.includes('-')) {
+        displayMain.textContent.slice(0, 1);
+    } else {
+        '-' + displayMain.textContent;
+    }
+}
+
 function handleOperatorButtonClick(button) {
-    if (operator === '/' && secondNum === 0) {
+    if (operator === '/' && secondNum === '0') {
         displayMain.textContent = 'LOL'
         operator = button.textContent;
     } else if (firstNum === '' && operator === '' && secondNum === '') {
@@ -183,7 +209,7 @@ function handleOperatorButtonClick(button) {
         firstNum = parseFloat(firstNum);
         secondNum = parseFloat(secondNum);
         const result = operate();
-        const roundedResult = result.toFixed(5); // Rounds result to within 5 decimal places.
+        const roundedResult = result.toFixed(10); // Rounds result to within 5 decimal places.
         const resultToNumber = parseFloat(roundedResult);// Changes roundedResult from string to number.
         firstNum = String(resultToNumber);
         displayMain.textContent = firstNum; // Adds the result of the most recent calculation to the main display.
@@ -201,7 +227,7 @@ function handleOperatorButtonClick(button) {
 }
 
 function handleOperateButtonClick() {
-    if (operator === '/' && secondNum === 0) {
+    if (operator === '/' && secondNum === '0') {
         displayMain.textContent = 'LOL'
     } else if (secondNum === '') {
         return; // When '=' button is pressed but secondNum is empty, nothing happens.
@@ -209,7 +235,7 @@ function handleOperateButtonClick() {
         firstNum = parseFloat(firstNum);
         secondNum = parseFloat(secondNum);
         const result = operate();
-        const roundedResult = result.toFixed(5); // Rounds result to within 5 decimal places.
+        const roundedResult = result.toFixed(10); // Rounds result to within 5 decimal places.
         const resultToNumber = parseFloat(roundedResult); // Changes roundedResult from string to number.
         firstNum = String(resultToNumber);
         displayMain.textContent = firstNum;
@@ -247,29 +273,19 @@ function handleBackspaceButtonClick() {
 }
 
 numberButtons.forEach(function(button) { // Gives functionality to the 'number' buttons.
-    button.addEventListener('click', function() {
-        handleNumberButtonClick(button);
-    });
+    button.addEventListener('click', () => handleNumberButtonClick(button));
 });
 
-decimalButton.addEventListener('click', function() {
-    handleDecimalButtonClick();
-});
+decimalButton.addEventListener('click', () => handleDecimalButtonClick());
+
+plusMinusButton.addEventListener('click', () => handlePlusMinusButtonClick() )
 
 operatorButtons.forEach(function(button) { // Gives functionality to the 'operator' buttons.
-    button.addEventListener('click', function() {
-        handleOperatorButtonClick(button);
-    });
+    button.addEventListener('click', () => handleOperatorButtonClick(button));
 });
 
-operateButton.addEventListener('click', function() { // Gives functionality to the '=' button.
-    handleOperateButtonClick();
-});
+operateButton.addEventListener('click', () => handleOperateButtonClick()); // Gives functionality to the '=' button.
 
-clearBtn.addEventListener('click', function() { // Gives functionality to the 'clear' button.
-    handleClearButtonClick();
-});
+clearBtn.addEventListener('click', () => handleClearButtonClick()); // Gives functionality to the 'clear' button.
 
-backspaceBtn.addEventListener('click', function() { // Gives functionality to the 'backspace' button.
-    handleBackspaceButtonClick()
-});
+backspaceBtn.addEventListener('click', () => handleBackspaceButtonClick()); // Gives functionality to the 'backspace' button.
