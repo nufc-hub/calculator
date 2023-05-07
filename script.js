@@ -242,7 +242,9 @@ function handleOperateButtonClick() {
         const resultToNumber = parseFloat(roundedResult); // Changes roundedResult from string to number.
         firstNum = String(resultToNumber);
         displayMain.textContent = firstNum;
-        displayMinor.textContent = '';
+        displayMinor.textContent = displayMinor.textContent + secondNum + '='; /* this adds the secondNum variable that has just been operated on to the subDisplay
+                                                                                along with an '=' sign. This is so the user can continue to see the history of their
+                                                                                calculation. */ 
         secondNum = '';
         operator = '';
         console.log(firstNum);
