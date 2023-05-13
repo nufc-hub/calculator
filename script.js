@@ -1,6 +1,10 @@
 const subDisplay = document.querySelector('.sub-display');
 
+subDisplay.setAttribute('style', 'color: blue; font-size: 20px;')
+
 const mainDisplay = document.querySelector('.main-display');
+
+mainDisplay.setAttribute('style', 'color: blue; font-size: 35px;');
 
 const numberButtons = document.querySelectorAll('.number-btn');
 
@@ -186,6 +190,10 @@ function handleNumberButtonClick(button) {
 }
 
 function handleDecimalButtonClick() {
+    if (mainDisplay.textContent.length === 15) {//Prevents a decimal being added when the main display = length 15//
+        return;
+    }
+
     if (firstNum !== '' && operator !== '' && secondNum === '') {
         mainDisplay.textContent = '0.'
         secondNum = '0.'
@@ -255,7 +263,7 @@ function handleOperatorButtonClick(button) {
         firstNum = parseFloat(firstNum);
         secondNum = parseFloat(secondNum);
         const result = operate();
-        const roundedResult = result.toFixed(10); // Rounds result to within 5 decimal places.
+        const roundedResult = result.toFixed(10); // Rounds result to within 10 decimal places.
         const resultToNumber = parseFloat(roundedResult);// Changes roundedResult from string to number.
         firstNum = String(resultToNumber);
         mainDisplay.textContent = firstNum; // Adds the result of the most recent calculation to the main display.
@@ -284,7 +292,7 @@ function handleOperateButtonClick() {
         firstNum = parseFloat(firstNum);
         secondNum = parseFloat(secondNum);
         const result = operate();
-        const roundedResult = result.toFixed(10); // Rounds result to within 5 decimal places.
+        const roundedResult = result.toFixed(10); // Rounds result to within 10 decimal places.
         const resultToNumber = parseFloat(roundedResult); // Changes roundedResult from string to number.
         firstNum = String(resultToNumber);
         mainDisplay.textContent = firstNum;
