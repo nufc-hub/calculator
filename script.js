@@ -4,7 +4,7 @@ subDisplay.setAttribute('style', 'color: blue; font-size: 20px;')
 
 const mainDisplay = document.querySelector('.main-display');
 
-mainDisplay.setAttribute('style', 'color: blue; font-size: 35px;');
+mainDisplay.setAttribute('style', 'font-size: 35px;');
 
 const numberButtons = document.querySelectorAll('.number-btn');
 
@@ -216,11 +216,18 @@ function handleDecimalButtonClick() {
 }
 
 function handlePlusMinusButtonClick() {
-    if (firstNum.includes('-')) {
+    const minus = '-';
+
+    if (firstNum.includes(minus) && operator === '') {         // Removes a minus symbol from the firstNum variable.
         firstNum = firstNum.slice(1);
         mainDisplay.textContent = firstNum;
-    } else {
-        const minus = '-';
+    } else if (secondNum.includes(minus) && operator !== '') {// Removes a minus symbol from the secondNum variable.
+        secondNum = secondNum.slice(1);
+        mainDisplay.textContent = secondNum;
+    } else if (operator !== '') {                             // Adds a minus symbol to secondNum variable.
+        secondNum = minus + secondNum;
+        mainDisplay.textContent = secondNum;
+    } else {                                                   // Adds a minus symbol to firstNum variable.
         firstNum = minus + firstNum;
         mainDisplay.textContent = firstNum
     }
