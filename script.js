@@ -1,6 +1,6 @@
-const subDisplay = document.querySelector('.sub-display');
+const subDisplay = document.querySelector('.sub-display-numbers');
 
-subDisplay.setAttribute('style', 'color: blue; font-size: 20px;')
+subDisplay.setAttribute('style', 'color: black; font-size: 20px;')
 
 const mainDisplay = document.querySelector('.main-display');
 

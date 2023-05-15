@@ -3,38 +3,43 @@
     <head>
         <meta charset="UTF-8">
         <title>calculator</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="stylesheets/style.css">
         <script defer src="script.js"></script>
     </head>
     <body>
         <div class="calculator-container">
             <div class="display-container">
                 <div class="sub-display"></div>
-                <div class="display-main"></div>
+                <div class="main-display"></div>
             </div>
-            <button class = 'plus-minus' id="plus-minus">+/-</button>
-            <div class="button-container">
-                <button class="number-btn" id="one">1</button>
-                <button class="number-btn" id="two">2</button>
-                <button class="number-btn" id="three">3</button>
-                <button class="number-btn" id="four">4</button>
-                <button class="number-btn" id="five">5</button>
-                <button class="number-btn" id="six">6</button>
-                <button class="number-btn" id="seven">7</button>
-                <button class="number-btn" id="eight">8</button>
-                <button class="number-btn" id="nine">9</button>
-                <button class="number-btn" id="zero">0</button>
-            </div>
-            <button class="point">.</button>
-            <div class="operator-container">
+            <div class="keypad">
+                <div class="top-row">
+                    <button class="clear" id="clear">clear</button>
+                    <button class="backspace" id="backspace">backspace</button>
+                    <button class = 'plus-minus'>+/-</button>
+                </div>
+                <div class="center">
+                    <button class="number-btn" id="one">1</button>
+                    <button class="number-btn" id="two">2</button>
+                    <button class="number-btn" id="three">3</button>
+                    <button class="number-btn" id="four">4</button>
+                    <button class="number-btn" id="five">5</button>
+                    <button class="number-btn" id="six">6</button>
+                    <button class="number-btn" id="seven">7</button>
+                    <button class="number-btn" id="eight">8</button>
+                    <button class="number-btn" id="nine">9</button>
+                    <button class="number-btn" id="zero">0</button>
+                    <button class="point">.</button>
+                    <button class="operate" id="equals">=</button>
+                </div>
+                <div class="right-side">
+                    <!--button class="operator" id="exponentiation">^</button-->
+                    <button class="operator" id="divide">/</button>
+                    <button class="operator" id="multiply">*</button>
+                    <button class="operator" id="subtract">-</button>
+                </div>
                 <button class="operator" id="add">+</button>
-                <button class="operator" id="subtract">-</button>
-                <button class="operator" id="multiply">*</button>
-                <button class="operator" id="divide">/</button>
-                <button class="operate" id="equals">=</button>
             </div>
-            <button class="clear" id="clear">clear</button>
-            <button class="backspace" id="backspace">backspace</button>
         </div>
     </body>
 </html>
