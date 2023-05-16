@@ -155,7 +155,10 @@ function handleNumberButtonClick(button) {
     const mainDisplayLength = 15
     const maxDecimalLength = 10
 
-    if (mainDisplay.textContent.length === 15) {
+    if (mainDisplay.textContent.length >= 15 && operator !== ''  && secondNum === '') {
+        mainDisplay.textContent = '';
+        mainDisplay.textContent = mainDisplay.textContent += button.textContent;
+    } else if (mainDisplay.textContent.length === 15) {
         return;
     }
 
