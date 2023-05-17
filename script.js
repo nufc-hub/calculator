@@ -4,7 +4,7 @@ subDisplay.setAttribute('style', 'color: black; font-size: 20px;')
 
 const mainDisplay = document.querySelector('.main-display');
 
-mainDisplay.setAttribute('style', 'font-size: 35px;');
+mainDisplay.setAttribute('style', 'font-size: 25px;');
 
 const numberButtons = document.querySelectorAll('.number-btn');
 
@@ -155,14 +155,28 @@ function handleNumberButtonClick(button) {
     const mainDisplayLength = 15
     const maxDecimalLength = 10
 
-    if (mainDisplay.textContent.length >= 15 && operator !== ''  && secondNum === '') {
+    if (mainDisplay.textContent.length >= 15 && operator !== ''  && secondNum === '') { /* When result of calculation >= 15 length, 
+                                                                                            display is cleared and number click text content is added.*/
         mainDisplay.textContent = '';
         mainDisplay.textContent = mainDisplay.textContent += button.textContent;
     } else if (mainDisplay.textContent.length === 15) {
         return;
     }
 
-    if (mainDisplay.textContent === 'LOL') {
+    if ((mainDisplay.textContent === '0' || mainDisplay.textContent === '-0')  && button.textContent !== '0' && (firstNum === '0' || firstNum === '-0')) { /* This prevents 0 being clicked
+                                                                                                                                                             more than once if mainDisplay value is 0 or -0 */
+        firstNum = firstNum.slice(1);
+        firstNum + button.textContent;
+    } else if ((mainDisplay.textContent === '0' || mainDisplay.textContent === '-0') && button.textContent !== '0' && (secondNum === '0' || secondNum === '-0')) {
+        secondNum = secondNum.slice(1);
+        secondNum + button.textContent;
+    } else if ((mainDisplay.textContent === '0' || mainDisplay.textContent === '-0') && button.textContent === '0' && (secondNum === '0' || secondNum === '-0')) {
+        return;
+    } else if ((mainDisplay.textContent === '0' || mainDisplay.textContent === '-0') && button.textContent === '0' && (firstNum === '0' || firstNum === '-0')) {
+        return;
+    }
+
+    if (mainDisplay.textContent === '...') {
         subDisplay.textContent += operator; /* Divide symbol is removed from sub display when divide by 0 is attempted.
                                             This replaces the operator in the sub display with the operator the most current
                                             calculation is being operated on. */
@@ -237,6 +251,10 @@ function handlePlusMinusButtonClick() {
 }
 
 function handleOperatorButtonClick(button) {
+    if(mainDisplay.textContent === '-') {  // Prevents operator operating on '-' string alone.
+        return;
+    }
+
     if (mainDisplay.textContent.length === 15) { 
         mainDisplay.textContent = '';
                                                     /* This clears the main display when an operator button is clicked,
@@ -247,14 +265,14 @@ function handleOperatorButtonClick(button) {
                                                     and therefore secondNum can't be entered. */
     }
     
-    if (mainDisplay.textContent === 'LOL') { //Prevents bugs due to replacing sub display operator values when dividing by 0.
+    if (mainDisplay.textContent === '...') { //Prevents bugs due to replacing sub display operator values when dividing by 0.
         mainDisplay.textContent = '';
         operator = button.textContent;
         subDisplay.textContent += operator;
         return;
     } else if (operator === '/' && secondNum === '0') {
-        mainDisplay.textContent = 'LOL';
-        secondNum = ''; /* This is set to '' otherwise when typing a number after the LOL message, 
+        mainDisplay.textContent = '...';
+        secondNum = ''; /* This is set to '' otherwise when typing a number after the ... message, 
                         a 0 will appear on the main display. This is because the 0 would still be left in the secondNum
                         variable from the divide by 0 operation. */
         modifySubDisplay = subDisplay.textContent.slice(0, -1);
@@ -291,8 +309,13 @@ function handleOperatorButtonClick(button) {
 }
 
 function handleOperateButtonClick() {
+    
+    if(mainDisplay.textContent === '-') {  // Prevents operate operating on '-' string alone.
+        return;
+    }
+
     if (operator === '/' && secondNum === '0') {
-        mainDisplay.textContent = 'LOL';
+        mainDisplay.textContent = '...';
         modifySubDisplay = subDisplay.textContent.slice(0, -1);
         subDisplay.textContent = modifySubDisplay;
         secondNum = '';
