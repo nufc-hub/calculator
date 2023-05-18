@@ -141,7 +141,7 @@ function operate() {
             return subtract(firstNum, secondNum);
         case 'x':
             return multiply(firstNum, secondNum);
-        case '/':
+        case '÷':
             return divide(firstNum, secondNum);
         case '^':
             return power(firstNum, secondNum);
@@ -347,8 +347,9 @@ function handleClearButtonClick() {
 }
 
 function handleBackspaceButtonClick() {
-
-    if (firstNum !== '' && operator !== '' && secondNum === '') {
+    if (subDisplay.textContent.charAt(subDisplay.textContent.length - 1) === '=') { // Clears the subdisplay first if it contains an '='.
+        subDisplay.textContent = '';
+    } else if (firstNum !== '' && operator !== '' && secondNum === '') {
         mainDisplay.textContent = '';
     } else if (firstNum !== '' && operator === '' && secondNum === '' ) {
         mainDisplay.textContent = mainDisplay.textContent.slice(0, -1);
