@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>calculator</title>
         <link rel="stylesheet" href="stylesheets/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
         <script defer src="script.js"></script>
     </head>
     <body>
         <div class="calculator-container">
             <div class="display-container">
+                <div class="logo"></div>
                 <div class="sub-display">
                     <div class="sub-display-numbers"></div>
                 </div>
@@ -16,8 +21,8 @@
             </div>
             <div class="keypad">
                 <div class="top-row">
-                    <button class="backspace" id="backspace">backspace</button>
-                    <button class="clear" id="clear">clear</button>
+                    <button class="backspace" id="backspace">DEL</button>
+                    <button class="clear" id="clear">AC</button>
                     <button class = 'plus-minus'>+/-</button>
                 </div>
                 <div class="center">
@@ -36,12 +41,17 @@
                 </div>
                 <div class="right-side">
                     <!--button class="operator" id="exponentiation">^</button-->
-                    <button class="operator" id="divide">/</button>
-                    <button class="operator" id="multiply">*</button>
+                    <button class="operator" id="divide">÷</button>
+                    <button class="operator" id="multiply">x</button>
                     <button class="operator" id="subtract">-</button>
                 </div>
                 <button class="operator" id="add">+</button>
             </div>
         </div>
+        <footer>
+            <div>
+                <a href="https://github.com/nufc-hub" class="my-git-link">a calculator. by nufc</a>
+            </div>
+        </footer>
     </body>
 </html>
