@@ -1,10 +1,10 @@
 const subDisplay = document.querySelector('.sub-display-numbers');
 
-subDisplay.setAttribute('style', 'color: black; font-size: 20px;')
+subDisplay.classList.add('sub-display-numbers-style')
 
 const mainDisplay = document.querySelector('.main-display');
 
-mainDisplay.setAttribute('style', 'font-size: 25px;');
+mainDisplay.classList.add('main-display-style');
 
 const numberButtons = document.querySelectorAll('.number-btn');
 
@@ -139,7 +139,7 @@ function operate() {
             return add(firstNum, secondNum);
         case '-':
             return subtract(firstNum, secondNum);
-        case '*':
+        case 'x':
             return multiply(firstNum, secondNum);
         case '/':
             return divide(firstNum, secondNum);
