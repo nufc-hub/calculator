@@ -152,14 +152,14 @@ function operate() {
 }
 
 function handleNumberButtonClick(button) {
-    const mainDisplayLength = 15
+    const mainDisplayLength = 12
     const maxDecimalLength = 10
 
-    if (mainDisplay.textContent.length >= 15 && operator !== ''  && secondNum === '') { /* When result of calculation >= 15 length, 
+    if (mainDisplay.textContent.length >= 12 && operator !== ''  && secondNum === '') { /* When result of calculation >= 12 length, 
                                                                                             display is cleared and number click text content is added.*/
         mainDisplay.textContent = '';
         mainDisplay.textContent = mainDisplay.textContent += button.textContent;
-    } else if (mainDisplay.textContent.length === 15) {
+    } else if (mainDisplay.textContent.length === 12) {
         return;
     }
 
@@ -176,7 +176,7 @@ function handleNumberButtonClick(button) {
         return;
     }
 
-    if (mainDisplay.textContent === '...') {
+    if (mainDisplay.textContent === ':D') {
         subDisplay.textContent += operator; /* Divide symbol is removed from sub display when divide by 0 is attempted.
                                             This replaces the operator in the sub display with the operator the most current
                                             calculation is being operated on. */
@@ -207,7 +207,7 @@ function handleNumberButtonClick(button) {
 }
 
 function handleDecimalButtonClick() {
-    if (mainDisplay.textContent.length === 15) {//Prevents a decimal being added when the main display = length 15//
+    if (mainDisplay.textContent.length === 12) {//Prevents a decimal being added when the main display = length 12//
         return;
     }
 
@@ -255,24 +255,24 @@ function handleOperatorButtonClick(button) {
         return;
     }
 
-    if (mainDisplay.textContent.length === 15) { 
+    if (mainDisplay.textContent.length === 12) { 
         mainDisplay.textContent = '';
                                                     /* This clears the main display when an operator button is clicked,
-                                                    if the display length is === to 15. This was added because 
-                                                    if the display length === 15 and the main display is not cleared,
+                                                    if the display length is === to 12. This was added because 
+                                                    if the display length === 12 and the main display is not cleared,
                                                     no more calculations can be done as the firstNum variable (which also
                                                     acts as the result), stays in the main display after pressing the operator
                                                     and therefore secondNum can't be entered. */
     }
     
-    if (mainDisplay.textContent === '...') { //Prevents bugs due to replacing sub display operator values when dividing by 0.
+    if (mainDisplay.textContent === ':D') { //Prevents bugs due to replacing sub display operator values when dividing by 0.
         mainDisplay.textContent = '';
         operator = button.textContent;
         subDisplay.textContent += operator;
         return;
-    } else if (operator === '/' && secondNum === '0') {
-        mainDisplay.textContent = '...';
-        secondNum = ''; /* This is set to '' otherwise when typing a number after the ... message, 
+    } else if (operator === '÷' && secondNum === '0') {
+        mainDisplay.textContent = ':D'
+        secondNum = ''; /* This is set to '' otherwise when typing a number after the :D message, 
                         a 0 will appear on the main display. This is because the 0 would still be left in the secondNum
                         variable from the divide by 0 operation. */
         modifySubDisplay = subDisplay.textContent.slice(0, -1);
@@ -301,7 +301,7 @@ function handleOperatorButtonClick(button) {
         subDisplay.textContent += operator; // Adds the clicked operator value to the sub-display.
     } else {
         operator = button.textContent;
-        subDisplay.textContent += firstNum; // This and...
+        subDisplay.textContent += firstNum; // This and :D
         subDisplay.textContent += operator; /* this moves the first number and first operator in the calculation
                                             to the sub-display as well ass all following numbers and operators, when true. */
     }
@@ -314,8 +314,8 @@ function handleOperateButtonClick() {
         return;
     }
 
-    if (operator === '/' && secondNum === '0') {
-        mainDisplay.textContent = '...';
+    if (operator === '÷' && secondNum === '0') {
+        mainDisplay.textContent = ':D';
         modifySubDisplay = subDisplay.textContent.slice(0, -1);
         subDisplay.textContent = modifySubDisplay;
         secondNum = '';
