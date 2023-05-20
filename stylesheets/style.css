@@ -122,6 +122,7 @@ body {
     display: grid;
     display: -webkit-grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-column: 1/2;
 }
 
 .backspace {
@@ -153,6 +154,7 @@ body {
     display: grid;
     display: -webkit-grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-column: 1;
     grid-row: 2 / 6;
 }
 
