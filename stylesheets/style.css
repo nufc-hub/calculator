@@ -18,7 +18,7 @@ body {
 
 .calculator-container {
     box-sizing: border-box;
-    width: 320px;
+    width: 90%;
     height:580px;
     box-shadow: 0 0 0 3px black;
     border: 10px solid rgb(173, 171, 158);
@@ -111,7 +111,7 @@ body {
     display: -webkit-grid; /* safari prefix */
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    width: 300px;
+    width: 100%;
     height:70%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
