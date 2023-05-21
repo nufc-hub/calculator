@@ -163,16 +163,21 @@ function handleNumberButtonClick(button) {
         return;
     }
 
-    if ((mainDisplay.textContent === '0' || mainDisplay.textContent === '-0')  && button.textContent !== '0' && (firstNum === '0' || firstNum === '-0')) { /* This prevents 0 being clicked
-                                                                                                                                                             more than once if mainDisplay value is 0 or -0 */
+    if ((mainDisplay.textContent === '0' || mainDisplay.textContent === '-0')  && button.textContent !== '0' && (firstNum === '0' || firstNum === '-0') && operator === '') { /* Prevents numbers starting with 0 e.g. 092.
+                                                                                                                                                                                 Adding operator logic prevents firstNum being 
+                                                                                                                                                                                 deleted if its value is  0 when second number 
+                                                                                                                                                                                 is entered. If operator logic is not included
+                                                                                                                                                                                 calculation = NAN. */
         firstNum = firstNum.slice(1);
         firstNum + button.textContent;
     } else if ((mainDisplay.textContent === '0' || mainDisplay.textContent === '-0') && button.textContent !== '0' && (secondNum === '0' || secondNum === '-0')) {
         secondNum = secondNum.slice(1);
         secondNum + button.textContent;
-    } else if ((mainDisplay.textContent === '0' || mainDisplay.textContent === '-0') && button.textContent === '0' && (secondNum === '0' || secondNum === '-0')) {
+    } else if ((mainDisplay.textContent === '0' || mainDisplay.textContent === '-0') && button.textContent === '0' && (secondNum === '0' || secondNum === '-0')) { /* This prevents 0 being clicked
+                                                                                                                                                                    more than once if mainDisplay value is 0 or -0 */
         return;
-    } else if ((mainDisplay.textContent === '0' || mainDisplay.textContent === '-0') && button.textContent === '0' && (firstNum === '0' || firstNum === '-0')) {
+    } else if ((mainDisplay.textContent === '0' || mainDisplay.textContent === '-0') && button.textContent === '0' && (firstNum === '0' || firstNum === '-0')) { /* This prevents 0 being clicked
+                                                                                                                                                                    more than once if mainDisplay value is 0 or -0 */
         return;
     }
 
@@ -292,7 +297,8 @@ function handleOperatorButtonClick(button) {
         secondNum = parseFloat(secondNum);
         const result = operate();
         const roundedResult = result.toFixed(10); // Rounds result to within 10 decimal places.
-        firstNum = roundedResult;
+        const resultToNumber = parseFloat(roundedResult);// Changes roundedResult from string to number this is so the an integer is return instead of a decimal e.g. 1.0000000 //
+        firstNum = String(resultToNumber);
         mainDisplay.textContent = firstNum; // Adds the result of the most recent calculation to the main display.
         subDisplay.textContent += secondNum; // Adds the secondNum variable to the sub-display.
         secondNum = ''; // This then sets the secondNum variable back to 0 to clear it for the next calculation.
@@ -325,9 +331,10 @@ function handleOperateButtonClick() {
         secondNum = parseFloat(secondNum);
         const result = operate();
         const roundedResult = result.toFixed(10); // Rounds result to within 10 decimal places.
-        firstNum = roundedResult;
+        const resultToNumber = parseFloat(roundedResult); // Changes roundedResult from string to number this is so the an integer is return instead of a decimal e.g. 1.0000000 //
+        firstNum = String(resultToNumber);
         mainDisplay.textContent = firstNum;
-        subDisplay.textContent = subDisplay.textContent + secondNum + ' = '; /* this adds the secondNum variable that has just been operated on to the subDisplay
+        subDisplay.textContent = ''; /* this adds the secondNum variable that has just been operated on to the subDisplay
                                                                                 along with an '=' sign. This is so the user can continue to see the history of their
                                                                                 calculation. */ 
         secondNum = '';
