@@ -117,7 +117,7 @@ body {
     display: -webkit-grid; /* safari prefix */
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    width: 100%;
+    width:fit-content;
     height:70%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
