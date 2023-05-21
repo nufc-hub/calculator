@@ -15,7 +15,7 @@ body {
 
 .calculator-container {
     box-sizing: border-box;
-    width: 100%;
+    width: 370px;
     height:590px;
     box-shadow: 0 0 0 3px black;
     border: 10px solid rgb(173, 171, 158);
