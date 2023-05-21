@@ -24,7 +24,7 @@ body {
 
 .calculator-container {
     box-sizing: border-box;
-    width: 100%;
+    width: 100%; /* Set width to a percentage so that .keypad will not overflow*/
     height:580px;
     box-shadow: 0 0 0 3px black;
     border: 10px solid rgb(173, 171, 158);
