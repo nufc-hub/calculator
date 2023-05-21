@@ -1,6 +1,6 @@
-const subDisplay = document.querySelector('.sub-display-numbers');
+const subDisplay = document.querySelector('.sub-display');
 
-subDisplay.classList.add('sub-display-numbers-style')
+subDisplay.classList.add('sub-display-style');
 
 const mainDisplay = document.querySelector('.main-display');
 
@@ -292,8 +292,7 @@ function handleOperatorButtonClick(button) {
         secondNum = parseFloat(secondNum);
         const result = operate();
         const roundedResult = result.toFixed(10); // Rounds result to within 10 decimal places.
-        const resultToNumber = parseFloat(roundedResult);// Changes roundedResult from string to number.
-        firstNum = String(resultToNumber);
+        firstNum = roundedResult;
         mainDisplay.textContent = firstNum; // Adds the result of the most recent calculation to the main display.
         subDisplay.textContent += secondNum; // Adds the secondNum variable to the sub-display.
         secondNum = ''; // This then sets the secondNum variable back to 0 to clear it for the next calculation.
@@ -326,10 +325,9 @@ function handleOperateButtonClick() {
         secondNum = parseFloat(secondNum);
         const result = operate();
         const roundedResult = result.toFixed(10); // Rounds result to within 10 decimal places.
-        const resultToNumber = parseFloat(roundedResult); // Changes roundedResult from string to number.
-        firstNum = String(resultToNumber);
+        firstNum = roundedResult;
         mainDisplay.textContent = firstNum;
-        subDisplay.textContent = subDisplay.textContent + secondNum + '='; /* this adds the secondNum variable that has just been operated on to the subDisplay
+        subDisplay.textContent = subDisplay.textContent + secondNum + ' = '; /* this adds the secondNum variable that has just been operated on to the subDisplay
                                                                                 along with an '=' sign. This is so the user can continue to see the history of their
                                                                                 calculation. */ 
         secondNum = '';
