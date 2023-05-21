@@ -7,6 +7,15 @@ body {
     background-color: rgb(248, 248, 248);
 } 
 
+@media (max-width: 500px) { /* CSS rules for screens with a maximum width of 500px */
+    .wrapper{
+        display: flex;
+        -webkit-flex: 1 1 auto;
+        flex: 1 1 auto;
+        width: 85vw;
+    }
+  }
+
 .wrapper {
     display: flex;
     -webkit-flex: 1 1 auto;
@@ -189,7 +198,7 @@ body {
 }
 
 footer{
-    display: flex;
+
     margin: 1%;
 }
 
