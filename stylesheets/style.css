@@ -65,11 +65,11 @@ body {
     width: 95%;
     height: 90%;
     padding-bottom: 2%;
-    font-family: 'digital-7', sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .sub-display-style {
-    font-size: 40px;
+    font-size: 38px;
 }
 
 .main-display-container {
@@ -93,11 +93,12 @@ body {
     overflow: auto;
     width: 95%;
     height: 90%;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+
 }
 
 .main-display-style {
-    font-size: 40px;
+    font-size: 45px;
 }
 
 .sub-display::-webkit-scrollbar,
