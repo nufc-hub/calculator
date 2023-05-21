@@ -11,41 +11,38 @@
         <script defer src="script.js"></script>
     </head>
     <body>
-        <div class="calculator-container">
-            <div class="display-container">
-                <div class="logo"></div>
-                <div class="sub-display">
-                    <div class="sub-display-numbers"></div>
+        <div class="wrapper">
+            <div class="calculator-container">
+                <div class="display-container">
+                    <div class="sub-display-container">
+                        <div class="sub-display"></div>
+                    </div>
+                    <div class="main-display-container">
+                        <div class="main-display"></div>
+                    </div>
                 </div>
-                <div class="main-display"></div>
-            </div>
-            <div class="keypad">
-                <div class="top-row">
+                <div class="keypad">
                     <button class="backspace" id="backspace">DEL</button>
                     <button class="clear" id="clear">AC</button>
                     <button class = 'plus-minus'>+/-</button>
-                </div>
-                <div class="center">
+                    <button class="operator" id="divide">÷</button>
                     <button class="number-btn" id="one">1</button>
                     <button class="number-btn" id="two">2</button>
                     <button class="number-btn" id="three">3</button>
+                    <button class="operator" id="multiply">x</button>
                     <button class="number-btn" id="four">4</button>
                     <button class="number-btn" id="five">5</button>
                     <button class="number-btn" id="six">6</button>
+                    <button class="operator" id="subtract">-</button>
                     <button class="number-btn" id="seven">7</button>
                     <button class="number-btn" id="eight">8</button>
                     <button class="number-btn" id="nine">9</button>
                     <button class="number-btn" id="zero">0</button>
                     <button class="point">.</button>
                     <button class="operate" id="equals">=</button>
-                </div>
-                <div class="right-side">
+                    <button class="operator" id="add">+</button>
                     <!--button class="operator" id="exponentiation">^</button-->
-                    <button class="operator" id="divide">÷</button>
-                    <button class="operator" id="multiply">x</button>
-                    <button class="operator" id="subtract">-</button>
                 </div>
-                <button class="operator" id="add">+</button>
             </div>
         </div>
         <footer>
