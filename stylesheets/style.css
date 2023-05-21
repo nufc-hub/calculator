@@ -9,6 +9,9 @@ body {
 
 @media (max-width: 500px) { /* Adjust dimensions for mobile devices */
     .wrapper {
+        display: flex;
+        -webkit-box-flex: 1;
+        flex: 1 1 auto;
         width: 90%;
         height: 90%;
     }
