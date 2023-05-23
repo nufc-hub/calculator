@@ -1,14 +1,16 @@
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     margin-top: 1.5%;
     background-color: rgb(248, 248, 248);
 } 
 
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .calculator-container {
-    width: 400px;
+    width: 350px;
+    margin: 0 auto;
     /*border: 10px solid rgb(173, 171, 158);
     box-shadow: 0 0 0 3px black;
     border-radius: 40px;
@@ -17,6 +19,7 @@ body {
 
 .display-container {
     display: grid;
+    width: 350px;
     height: 90px;
     /*border-top: 10px solid rgb(173, 171, 158);
     border-top-left-radius: 20px;
@@ -83,12 +86,9 @@ body {
         'seven eight nine multiply'
         'four five six subtract'
         'one two three add'
-        'zero decimal equals add'
-    /*background-color: rgb(199,200,166);*/
+        'zero decimal equals add';
+    background-color: rgb(199,200,166);
 }
-
-
-
 
 
 .backspace {
@@ -96,7 +96,8 @@ body {
     cursor:pointer;
     background-color: rgb(255,152,41);
     font-family: 'Nunito', sans-serif;
-    font-size: 2em;
+    font-size: 1em;
+    font-weight: bold;
     color: black;
 }
 
@@ -104,7 +105,8 @@ body {
     border-radius: 10px;
     cursor:pointer;
     font-family: 'Nunito', sans-serif;
-    font-size: 2em;
+    font-size: 1.1em;
+    font-weight: bold;
     color: black;
 }
 
@@ -112,7 +114,7 @@ body {
     border-radius: 10px;
     cursor:pointer;
     font-family: 'Nunito', sans-serif;
-    font-size: 2em;
+    font-size: 1.4em;
     color: black;
 }
 
@@ -145,6 +147,7 @@ body {
     font-size: 2em;
     color: black;
 }
+
 
 #add {
     border-bottom-right-radius: 40px;
@@ -240,6 +243,7 @@ body {
 
 footer{
     display: flex;
+    justify-content: center;
     margin: 1%;
 }
 
