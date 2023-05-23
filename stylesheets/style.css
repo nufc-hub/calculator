@@ -7,48 +7,34 @@ body {
     background-color: rgb(248, 248, 248);
 } 
 
-.wrapper {
-    flex: 1 1 auto;
-}
-
 .calculator-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(7, 1fr);
-    width: 80vw;
-    height: 570px;
-    max-width: 350px;
-    max-height: 570px;
-    border: 10px solid rgb(173, 171, 158);
+    width: 400px;
+    /*border: 10px solid rgb(173, 171, 158);
     box-shadow: 0 0 0 3px black;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-    background-color: rgb(199,200,166);
+    border-radius: 40px;
+    background-color: rgb(199,200,166);*/
 }
 
 .display-container {
     display: grid;
-    grid-column: 1/5;
-    grid-row: 1/3;
-    border-top: 10px solid rgb(173, 171, 158);
+    justify-items: end;
+    width: 370px;
+    height: 90px;
+    /*border-top: 10px solid rgb(173, 171, 158);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    background-color: rgb(173, 171, 158);
+    background-color: rgb(173, 171, 158);*/
 }
 
 .sub-display{
-    flex-direction: row-reverse;
+    align-self: start;
+    /*flex-direction: row-reverse;
     align-content: flex-end;
-    grid-column: 1/5;
-    grid-row: 1/2;
     word-wrap: break-word;
     overflow: auto;
-    border-radius: 10px;
     box-shadow: inset 2px 3px 5px 0px rgba(0,0,0,0.7);
     background-color: rgb(131,183,153);
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Quicksand', sans-serif;*/
 }
 
 .sub-display-style {
@@ -56,18 +42,17 @@ body {
 }
 
 .main-display {
-    flex-direction: row-reverse;
+    align-self: end;
+    /*flex-direction: row-reverse;
     align-content: flex-end;
     align-items: end;
-    grid-column: 1/5;
-    grid-row: 2/3;
     word-wrap: break-word;
     overflow: auto;
     border-top: 10px solid rgb(173, 171, 158);
     border-bottom: 10px solid rgb(173, 171, 158);
     box-shadow: inset 2px 3px 5px 0px rgba(0,0,0,0.7);
     background-color: rgb(131,183,153);
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Quicksand', sans-serif;*/
 
 }
 
@@ -92,12 +77,21 @@ body {
 }
 
 
-/*.keypad {
+.keypad {
     display: grid;
-    grid-column: 1/5;
-    grid-row: 3/8;
-    background-color: rgb(199,200,166);
-}*/
+    height: 450px;
+    grid-template: 
+        'backspace clear plus-minus divide'
+        'seven eight nine multiply'
+        'four five six subtract'
+        'one two three add'
+        'zero decimal equals add'
+    /*background-color: rgb(199,200,166);*/
+}
+
+
+
+
 
 .backspace {
     border-radius: 10px;
@@ -129,7 +123,7 @@ body {
     cursor:pointer;
 }
 
-.point {
+.decimal {
     border-radius: 10px;
     cursor:pointer;
     font-family: 'Nunito', sans-serif;
@@ -155,8 +149,6 @@ body {
 }
 
 #add {
-    grid-column: 4/5;
-    grid-row: 6/8;
     border-bottom-right-radius: 40px;
     background-color: rgb(255,152,41);
 }
@@ -168,6 +160,84 @@ body {
     font-family: 'Ubuntu', sans-serif;
     font-size: 2em;
     color: black;
+}
+
+/*number position in grid*/
+
+#one {
+    grid-area: one;
+}
+
+#two {
+    grid-area: two;
+}
+
+#three {
+    grid-area: three;
+}
+
+#four {
+    grid-area: four;
+}
+
+#five {
+    grid-area: five;
+}
+
+#six {
+    grid-area: six;
+}
+
+#seven {
+    grid-area: seven;
+}
+
+#eight {
+    grid-area: eight;
+}
+
+#nine {
+    grid-area: nine;
+}
+
+#zero {
+    grid-area: zero;
+}
+
+#decimal {
+    grid-area: decimal;
+}
+
+#backspace {
+    grid-area: backspace;
+}
+
+#clear {
+    grid-area: clear;
+}
+
+#plus-minus {
+    grid-area: plus-minus;
+}
+
+#divide {
+    grid-area: divide;
+}
+
+#multiply {
+    grid-area: multiply;
+}
+
+#subtract {
+    grid-area: subtract;
+}
+
+#add {
+    grid-area: add;
+}
+
+#equals {
+    grid-area: equals;
 }
 
 footer{
