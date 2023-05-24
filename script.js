@@ -8,7 +8,7 @@ mainDisplay.classList.add('main-display-style');
 
 const numberButtons = document.querySelectorAll('.number-btn');
 
-const decimalButton = document.querySelector('.point');
+const decimalButton = document.querySelector('.decimal');
 
 const plusMinusButton = document.querySelector('.plus-minus');
 
@@ -69,7 +69,7 @@ window.onkeydown = function(e) {
             choice.click();
             break;
         case '.':
-            choice = document.querySelector('.point');
+            choice = document.querySelector('.decimal');
             choice.click();
             break;
         case '+':
