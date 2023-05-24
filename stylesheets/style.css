@@ -9,7 +9,7 @@ body {
 }
 
 .calculator-container {
-    width: 350px;
+    width: 330px;
     margin: 0 auto;
     border: 12px solid rgb(173, 171, 158);
     box-shadow: 0 0 0 3px black;
@@ -19,7 +19,6 @@ body {
 
 .display-container {
     display: grid;
-    width: 350px;
     height: 180px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -81,7 +80,7 @@ body {
 
 .keypad {
     display: grid;
-    height: 450px;
+    height: 400px;
     grid-template: 
         'backspace clear plus-minus divide'
         'seven eight nine multiply'
