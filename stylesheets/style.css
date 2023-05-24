@@ -9,7 +9,7 @@ body {
 }
 
 .calculator-container {
-    width: 340px;
+    width: 350px;
     margin: 0 auto;
     border: 12px solid rgb(173, 171, 158);
     box-shadow: 0 0 0 3px black;
