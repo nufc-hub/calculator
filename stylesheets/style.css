@@ -25,7 +25,7 @@ body {
     background-color: rgb(173, 171, 158);
 }
 
-.sub-display{
+.sub-display {
     display: flex;
     flex-direction: row-reverse;
     align-content: flex-end;
@@ -33,14 +33,16 @@ body {
     height: 60px;
     padding-left: 10px;
     border-radius: 20px;
-    box-shadow: inset 2px 3px 5px 0px rgba(0,0,0,0.7);
-    background-color: rgb(131,183,153);
+    box-shadow: inset 2px 3px 5px 0px rgba(0, 0, 0, 0.7);
+    background-color: rgb(131, 183, 153);
     font-family: 'Quicksand', sans-serif;
-}
-
-.sub-display-style {
+  }
+  
+  .sub-display-style {
     font-size: 38px;
-}
+    white-space: nowrap; /* Prevents text from wrapping */
+  }
+  
 
 .main-display {
     display: flex;
